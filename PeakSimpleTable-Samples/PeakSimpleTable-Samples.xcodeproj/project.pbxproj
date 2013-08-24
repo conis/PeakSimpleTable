@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C607FF047FDC4440B060B30D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE48AAC963A4AAA80DE2F26 /* libPods.a */; };
 		D2708F4A17C8690E005F190C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D2708F4917C8690E005F190C /* Podfile */; };
+		D2708F4C17C89C17005F190C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2708F4B17C89C17005F190C /* README.md */; };
 		D296E0F317C78EF70036B3ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D296E0F217C78EF70036B3ED /* UIKit.framework */; };
 		D296E0F517C78EF70036B3ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D296E0F417C78EF70036B3ED /* Foundation.framework */; };
 		D296E0F717C78EF70036B3ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D296E0F617C78EF70036B3ED /* CoreGraphics.framework */; };
@@ -27,6 +28,7 @@
 		1AE48AAC963A4AAA80DE2F26 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		974F3EC0B44D40A98C862063 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = "PeakSimpleTable-Samples/Pods/Pods.xcconfig"; sourceTree = SOURCE_ROOT; };
 		D2708F4917C8690E005F190C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D2708F4B17C89C17005F190C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		D296E0EF17C78EF70036B3ED /* PeakSimpleTable-Samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PeakSimpleTable-Samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D296E0F217C78EF70036B3ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D296E0F417C78EF70036B3ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,6 +110,7 @@
 		D296E0F917C78EF70036B3ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2708F4B17C89C17005F190C /* README.md */,
 				D2708F4917C8690E005F190C /* Podfile */,
 				D296E0FA17C78EF70036B3ED /* PeakSimpleTable-Samples-Info.plist */,
 				D296E0FB17C78EF70036B3ED /* InfoPlist.strings */,
@@ -189,6 +192,7 @@
 				D296E10917C78EF70036B3ED /* Default-568h@2x.png in Resources */,
 				D296E10C17C78EF70036B3ED /* MainStoryboard.storyboard in Resources */,
 				D2708F4A17C8690E005F190C /* Podfile in Resources */,
+				D2708F4C17C89C17005F190C /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
