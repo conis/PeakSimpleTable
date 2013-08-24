@@ -17,8 +17,6 @@
 @property (nonatomic, strong) id<PeakSimpleTableDelegate> delegate;
 //header的高度
 @property (nonatomic) CGFloat headerHeight;
-//列数
-@property (nonatomic) NSInteger columnCount;
 //是否显示header
 @property (nonatomic) BOOL showHeader;
 //标题的背景
@@ -31,6 +29,8 @@
 @property (nonatomic, strong) UIFont *headerFont;
 //内容的字体
 @property (nonatomic, strong) UIFont *contentFont;
+//字段名称
+@property (nonatomic, strong) NSArray *fields;
 -(void) reloadData;
 @end
 
@@ -38,19 +38,19 @@
 @protocol PeakSimpleTableDelegate <NSObject>
 @optional
 //完成列内容，可以再设置label的颜色，字体等
--(void) peakSimpleTable: (PeakSimpleTable *) simpleTable didFinishContent: (UILabel *) contentLabel column: (NSInteger) column row: (NSInteger) row;
+-(void) peakSimpleTable: (PeakSimpleTable *) simpleTable didFinishContent: (UILabel *) contentLabel column: (NSInteger) col row: (NSInteger) row field: (NSString *) field;
 //标题完成
--(void) peakSimpleTable: (PeakSimpleTable *) simpleTable didFinishHeader: (UILabel *) headerLabel column: (NSInteger) column;
+-(void) peakSimpleTable: (PeakSimpleTable *) simpleTable didFinishHeader: (UILabel *) headerLabel column: (NSInteger) col field: (NSString *) field;
 //获取列宽度
--(CGFloat) peakSimpleTable: (PeakSimpleTable *) simpleTable widthForColumnIndex: (NSInteger) index;
+-(CGFloat) peakSimpleTable: (PeakSimpleTable *) simpleTable widthForColumn: (NSInteger) col field: (NSString *) field;
 //获取行高
 -(CGFloat) peakSimpleTable: (PeakSimpleTable *) simpleTable heightForRow: (NSInteger) row;
 //委托必需要提供的内容
 @required
 //获取列标题
--(NSString *) peakSimpleTable: (PeakSimpleTable *) simpleTable headerForColumnIndex: (NSInteger) index;
+-(NSString *) peakSimpleTable: (PeakSimpleTable *) simpleTable headerForColumn: (NSInteger) col field: (NSString *) field;
 //获取列内容
--(NSString *) peakSimpleTable: (PeakSimpleTable *) simpleTable contentForColumnIndex: (NSInteger) index row: (NSInteger) row;
+-(NSString *) peakSimpleTable: (PeakSimpleTable *) simpleTable contentForColumn: (NSInteger) col row: (NSInteger) row field: (NSString *) field;
 //获取数据的数量
 -(NSInteger) peakSimpleTable: (PeakSimpleTable *) simpleTable numberOfRowsInSection: (NSInteger) section;
 @end

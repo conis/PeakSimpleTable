@@ -67,7 +67,7 @@ static NSInteger kTagBase = 1000;
 -(void) createContent: (UIView *) superView isHeader: (BOOL) isHeader{
   //如果还没有设置header，则取第一行
   CGFloat lastRightX = self.columnSpacing;
-  for (int i = 0; i < self.columnCount; i ++) {
+  for (int i = 0; i < self.fields.count; i ++) {
     UILabel *label = [[UILabel alloc] init];
     [superView addSubview: label];
     label.frameSizeHeight = superView.frameSizeHeight;
@@ -77,17 +77,19 @@ static NSInteger kTagBase = 1000;
     
     //设置宽度
     CGFloat width = CGFLOAT_MIN;
-    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:widthForColumnIndex:)]){
-      width = [self.delegate peakSimpleTable:self widthForColumnIndex:i];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:widthForColumn: field:)]){
+      width = [self.delegate peakSimpleTable:self
+                              widthForColumn:i
+                                       field:self.fields[i]];
     };
     
     //没有通过代理获取宽度，或者返回的宽度不正确
     if(width == CGFLOAT_MIN){
-      width = (superView.frameSizeWidth / self.columnCount) - self.columnSpacing;
+      width = (superView.frameSizeWidth / self.fields.count) - self.columnSpacing;
     }
     
     //最后一列
-    if(i == self.columnCount -1) width = superView.frameSizeWidth - lastRightX - self.columnSpacing;
+    if(i == self.fields.count -1) width = superView.frameSizeWidth - lastRightX - self.columnSpacing;
     label.frameSizeWidth = width;
     label.frameOriginX = lastRightX;
     lastRightX = label.frameOriginX + label.frameSizeWidth + self.columnSpacing;
@@ -95,15 +97,21 @@ static NSInteger kTagBase = 1000;
     if(!isHeader) continue;
     
     //标题需要请求委托
-    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:headerForColumnIndex:)]){
-      label.text = [self.delegate peakSimpleTable:self headerForColumnIndex:i];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:headerForColumn: field:)]){
+      label.text = [self.delegate peakSimpleTable:self
+                                  headerForColumn:i
+                                            field:self.fields[i]
+                    ];
     }else{
       label.text = nil;
     }
     
     //通知完成标题的绘制
-    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:didFinishHeader:column:)]){
-      [self.delegate peakSimpleTable:self didFinishHeader:label column:i];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:didFinishHeader:column: field:)]){
+      [self.delegate peakSimpleTable:self didFinishHeader:label
+                              column:i
+                               field:self.fields[i]
+       ];
     }
   }
 }
@@ -154,20 +162,28 @@ static NSInteger kTagBase = 1000;
     [self createContent:cell.contentView isHeader:NO];
   }
   
-  for (int i = 0; i < self.columnCount; i ++) {
+  for (int i = 0; i < self.fields.count; i ++) {
     UIView *view = [cell.contentView viewWithTag: kTagBase + i];
     if(view == nil) continue;
     
     UILabel *label = (UILabel*)view;
     NSString *value = nil;
     //准备内容
-    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:contentForColumnIndex:row:)]){
-      value = [self.delegate peakSimpleTable:self contentForColumnIndex: i row:indexPath.row];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(peakSimpleTable:contentForColumn:row: field:)]){
+      value = [self.delegate peakSimpleTable:self
+                            contentForColumn: i
+                                         row:indexPath.row
+                                       field:self.fields[i]
+               ];
     }
     label.text = value;
 
-    if(self.delegate && [self.delegate respondsToSelector: @selector(peakSimpleTable:didFinishContent:column:)]){
-        [self.delegate peakSimpleTable:self didFinishContent:label column:i row:indexPath.row];
+    if(self.delegate && [self.delegate respondsToSelector: @selector(peakSimpleTable:didFinishContent:column:row:field:)]){
+        [self.delegate peakSimpleTable:self
+                      didFinishContent:label
+                                column:i row:indexPath.row
+                                 field: self.fields[i]
+         ];
     }
   }
   return cell;
