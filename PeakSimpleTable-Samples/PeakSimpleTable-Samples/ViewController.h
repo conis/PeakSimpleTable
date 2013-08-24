@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PeakSimpleTable.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<PeakSimpleTableDelegate>
 
+@property (nonatomic, strong) IBOutlet PeakSimpleTable *simpleTable;
 @end
