@@ -13,6 +13,9 @@ E-mail: [conis.yi@gmail.com](conis.yi@gmail.com)
 
 项目主页: [https://github.com/conis/PeakSimpleTable](https://github.com/conis/PeakSimpleTable)
 
+#Screenshot
+![screenshot](https://raw.github.com/conis/PeakSimpleTable/master/screenshot-1.png)
+
 #Usage
 自用项目，暂时没有时间写使用说明，请参考代码，欢迎Fork或者翻译。
 `PeakSimpleTable`可以用于简单的行列式报表显示，可以自定义每一个单元格的样式。
